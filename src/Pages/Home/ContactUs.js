@@ -1,5 +1,6 @@
 import React from 'react';
 import appointment from '../../assets/images/appointment.png';
+import PrimaryButton from '../Shared/PrimaryButton';
 
 const ContactUs = () => {
   return (
@@ -7,7 +8,7 @@ const ContactUs = () => {
       style={{
         background: `url(${appointment})`,
       }}
-      className="grid justify-center my-28 py-28 gap-5"
+      className="grid justify-center my-14 py-28 gap-5"
     >
       <div>
         <h4 className="text-primary font-bold text-center">Contact Us</h4>
@@ -18,14 +19,15 @@ const ContactUs = () => {
       <input
         type="email"
         placeholder="Email Address"
-        class="input input-bordered input-xl w-full max-w-xs"
+        className="input input-bordered input-xl w-full max-w-xs"
       />
       <input
         type="text"
         placeholder="Subject"
-        class="input input-bordered input-xl w-full max-w-xs"
+        className="input input-bordered input-xl w-full max-w-xs"
       />
-      <textarea class="textarea h-32" placeholder="Your message"></textarea>
+      <textarea className="textarea h-32" placeholder="Your message"></textarea>
+      <PrimaryButton>Submit</PrimaryButton>
     </section>
   );
 };
