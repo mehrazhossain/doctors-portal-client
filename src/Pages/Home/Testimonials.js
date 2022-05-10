@@ -16,14 +16,14 @@ const Testimonials = () => {
     },
     {
       _id: 2,
-      name: 'Winson Herry',
+      name: 'Amelia Davies',
       review: '',
       location: 'California',
       img: people2,
     },
     {
       _id: 3,
-      name: 'Winson Herry',
+      name: 'Victoria Barker',
       review: '',
       location: 'California',
       img: people3,
