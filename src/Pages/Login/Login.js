@@ -2,7 +2,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import {
   useSignInWithGoogle,
-  useCreateUserWithEmailAndPassword,
+  useSignInWithEmailAndPassword,
 } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading';
@@ -10,8 +10,8 @@ import { Link } from 'react-router-dom';
 
 const Login = () => {
   const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
-  const [createUserWithEmailAndPassword, user, loading, error] =
-    useCreateUserWithEmailAndPassword(auth);
+  const [signInWithEmailAndPassword, user, loading, error] =
+    useSignInWithEmailAndPassword(auth);
   let loadingSpinner;
 
   const {
@@ -22,7 +22,7 @@ const Login = () => {
 
   const onSubmit = (data) => {
     console.log(data);
-    createUserWithEmailAndPassword(data.email, data.password);
+    signInWithEmailAndPassword(data.email, data.password);
   };
 
   if (loading || gLoading) {
