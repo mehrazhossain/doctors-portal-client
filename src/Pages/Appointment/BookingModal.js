@@ -1,16 +1,43 @@
 import { format } from 'date-fns';
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { toast } from 'react-toastify';
+import auth from '../../firebase.init';
 
 const BookingModal = ({ date, treatment, setTreatment }) => {
   const { _id, name, slots } = treatment;
+  const [user, loading, error] = useAuthState(auth);
+  const formattedDate = format(date, 'PP');
 
   const handleBooking = (event) => {
     event.preventDefault();
     const slot = event.target.slot.value;
-    console.log(_id, slot);
 
-    // to close the modal
-    setTreatment(null);
+    const booking = {
+      treatmentId: _id,
+      treatment: name,
+      date: formattedDate,
+      slot,
+      patient: user.email,
+      patientName: user.displayName,
+      phone: event.target.phone.value,
+    };
+
+    fetch('http://localhost:5000/booking', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify(booking),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+
+        // to close the modal
+        setTreatment(null);
+        toast('Booking Submitted Successfully');
+      });
   };
   return (
     <div>
@@ -18,7 +45,7 @@ const BookingModal = ({ date, treatment, setTreatment }) => {
       <div className="modal modal-bottom sm:modal-middle">
         <div className="modal-box">
           <label
-            for="booking-modal"
+            htmlFor="booking-modal"
             className="btn btn-sm btn-circle absolute right-2 top-2"
           >
             ✕
@@ -40,20 +67,24 @@ const BookingModal = ({ date, treatment, setTreatment }) => {
               name="slot"
               className="select select-bordered w-full max-w-xs"
             >
-              {slots.map((slot) => (
-                <option value={slot}>{slot}</option>
+              {slots.map((slot, index) => (
+                <option key={index} value={slot}>
+                  {slot}
+                </option>
               ))}
             </select>
             <input
               name="name"
               type="text"
-              placeholder="Your Name"
+              disabled
+              value={user?.displayName || ''}
               className="input input-bordered w-full max-w-xs"
             />
             <input
               name="email"
               type="email"
-              placeholder="Email Address"
+              disabled
+              value={user?.email || ''}
               className="input input-bordered w-full max-w-xs"
             />
             <input
