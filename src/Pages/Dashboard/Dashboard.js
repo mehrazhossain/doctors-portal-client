@@ -7,7 +7,7 @@ import useAdmin from '../../hooks/useAdmin';
 const Dashboard = () => {
   const [user] = useAuthState(auth);
   const [admin] = useAdmin(user);
-  console.log('error', admin);
+  console.log(admin);
   return (
     <div class="drawer drawer-mobile">
       <input id="dashboard-sidebar" type="checkbox" class="drawer-toggle" />
