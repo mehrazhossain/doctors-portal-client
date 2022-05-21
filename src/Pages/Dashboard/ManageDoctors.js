@@ -11,7 +11,7 @@ const ManageDoctors = () => {
     isLoading,
     refetch,
   } = useQuery('doctors', () =>
-    fetch('http://localhost:5000/doctor', {
+    fetch('https://doctors-portal-80904.herokuapp.com/doctor', {
       headers: {
         'content-type': 'application/json',
         authorization: `Bearer ${localStorage.getItem('accessToken')}`,
