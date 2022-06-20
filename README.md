@@ -2,7 +2,13 @@
 
 > DoctorsPortal platform built with the MERN stack.
 
-![screenshot](https://github.com/mehrazhossain/doctors-portal-client/blob/main/uploads/screencapture-doctors-portal.png?raw=true)
+## Live-website
+
+![https://doctors-portal-40ac9.web.app/](https://doctors-portal-40ac9.web.app/)
+
+## Screenshots
+
+![App Screenshot](https://github.com/mehrazhossain/doctors-portal-client/blob/main/uploads/screencapture-doctors-portal.png?raw=true)
 
 ## Features
 
