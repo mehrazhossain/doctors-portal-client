@@ -4,7 +4,7 @@
 
 ## Live-website
 
-![https://doctors-portal-40ac9.web.app/](https://doctors-portal-40ac9.web.app/)
+![Click Here](https://doctors-portal-40ac9.web.app/)
 
 ## Screenshots
 
